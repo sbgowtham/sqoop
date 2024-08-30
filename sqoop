@@ -1,0 +1,33 @@
+Sqoop Import
+--------------
+Read RDBMS(MYSQL) data
+
+bin/sqoop-eval --connect jdbc:mysql://localhost/test -username root -password root --query "SELECT * FROM demo"
+
+MYSQL to HDFS
+
+bin/sqoop import --connect jdbc:mysql://localhost/test -username root -password root --table demo -m1 
+
+hadoop fs -ls
+
+--target-dir
+
+--sqoop import-all-tables
+
+MYSQL to Hive
+
+bin/sqoop-import --connect jdbc:mysql://localhost/test -username root -password root --table data1 --hive-table demohive --create-hive-table --hive-import -m1
+
+MYSQL to HBase
+
+bin/sqoop import --connect jdbc:mysql://localhost/test --username root --password root --table demo --hbase-table testhbase --column-family cf --hbase-row-key pid --hbase-create-table -m1
+
+Sqoop Export
+------------
+HDFS to MYSQL
+
+bin/sqoop export --connect jdbc:mysql://localhost/test --username root -password root --table drug --export-dir /user/hive/warehouse/table1 -m1
+
+Hive to MYSQL (make sure same schema/column name) in both tables 
+
+bin/sqoop export --connect jdbc:mysql://localhost/test --table test_hive_1 --export-dir /user/hive/warehouse/drug --username root -password root -m1
