@@ -17,9 +17,11 @@ exit;
 
 mysql -h ip-172-31-3-168.ec2.internal -u srm -p
 
-
-
-mysql -u root -p 
+create database test;
+use test;
+create table demo (sno int);
+insert into demo (sno ) values (1);
+exit;
 
 
 sudo netstat -tuln | grep 3306
