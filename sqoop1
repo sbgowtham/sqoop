@@ -1,0 +1,27 @@
+
+sudo yum update -y
+sudo wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+sudo rpm -ivh mysql80-community-release-el7-3.noarch.rpm
+
+sudo yum install -y mysql-server 
+
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
+sudo mysql -u root
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
+exit;
+
+mysql -u root -p 
+
+
+sudo netstat -tuln | grep 3306
+
+sqoop import \
+--connect jdbc:mysql://172.31.15.116:3306/test \
+--username root \
+--password root \
+--table demo \
+--target-dir /demo_tt1 \
+--m 1
+
