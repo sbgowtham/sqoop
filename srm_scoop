@@ -5,9 +5,6 @@ sudo rpm -ivh mysql80-community-release-el7-3.noarch.rpm
 
 sudo yum install -y mysql-server 
 
-sudo systemctl start mysqld
-sudo systemctl enable mysqld
-
 sudo mysql -u root
 
 CREATE USER 'srm'@'ip-172-31-3-168.ec2.internal' IDENTIFIED BY 'root';
